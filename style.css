@@ -12,3 +12,16 @@ body {
     align-items: center;
     height: 100vh;
 }
+
+.holder {
+    border: 1px solid black;
+    border-radius: 0.3rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.flexbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
