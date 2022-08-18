@@ -32,12 +32,14 @@ function App() {
     }
     function decreaseSession() {
         if (sessionValue > 1) {
-            setSessionValue(sessionValue - 1)
+            setSessionValue(sessionValue - 1);
+            setTimeLeft(timeLeft - 60);
         }
     }
     function increaseSession() {
         if (sessionValue < 60) {
-            setSessionValue(sessionValue + 1)
+            setSessionValue(sessionValue + 1);
+            setTimeLeft(timeLeft + 60);
         }
     }
     function handleStart() {
@@ -60,12 +62,12 @@ function App() {
     const resetTimer = () => {
         const audio = document.getElementById("beep");
         if (!timeLeft && timingType === "SESSION") {
-            setTimeLeft(breakLength * 60)
+            setTimeLeft(breakValue * 60)
             setTimingType("BREAK")
             audio.play()
         }
         if (!timeLeft && timingType === "BREAK") {
-            setTimeLeft(sessionLength * 60)
+            setTimeLeft(sessionValue * 60)
             setTimingType("SESSION")
             audio.pause()
             audio.currentTime = 0;
@@ -80,6 +82,8 @@ function App() {
             clearTimeout(timeout);
         }
     }
+
+    const title = timingType === "SESSION" ? "Session" : "Break";
 
     React.useEffect(() => {
         clock()
@@ -105,8 +109,8 @@ function App() {
                 </div>
             </div>
             <div className="holder">
-                <h2 id="timer-label">{timingType == "SESSION" ? "Session" : "Break"}</h2>
-                <div id="time-left">{timeFormatter()}</div>
+                <h2 id="timer-label">{title}</h2>
+                <h3 id="time-left">{timeFormatter()}</h3>
             </div>
             <button id="start_stop" onClick={handleStart}>start/stop</button>
             <button id="reset" onClick={handleReset}>reset</button>
