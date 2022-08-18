@@ -11,6 +11,12 @@ function App() {
     function increaseSession() {
 
     }
+    function handleStart() {
+
+    }
+    function handleReset() {
+
+    }
     return (
         <>
             <div id="break-label">break length</div>
@@ -19,6 +25,12 @@ function App() {
             <button onClick={decreaseSession} id="session-decrement">S.D.</button>
             <button onClick={increaseBreak} id="break-increment">B.I.</button>
             <button onClick={increaseSession} id="session-increment">S.I.</button>
+            <div id="break-length">5</div>
+            <div id="session-length">25</div>
+            <div id="timer-label">Session</div>
+            <div id="time-left">25:00</div>
+            <button id="start_stop" onClick={handleStart}>start/stop</button>
+            <button id="reset" onClick={handleReset}></button>
         </>
     );
 }
